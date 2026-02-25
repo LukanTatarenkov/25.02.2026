@@ -1,68 +1,290 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Чернівецький ліцей №14</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Чернівецький ліцей №14</title>
+  <meta name="description" content="Чернівецький ліцей №14 — сучасна освіта, сильна команда вчителів, успішні випускники">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #004d99;
+      --primary-dark: #003366;
+      --accent: #e63946;
+      --light: #f8f9fa;
+      --gray: #6c757d;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: var(--light);
+    }
+
+    header {
+      background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.65)),
+                  url('https://images.unsplash.com/photo-1580582932707-520aed4e9987?ixlib=rb-4.0.3&auto=format&fit=crop&w=1740&q=80') center/cover no-repeat;
+      color: white;
+      text-align: center;
+      padding: 120px 20px 80px;
+      position: relative;
+    }
+
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.8rem;
+      margin-bottom: 0.4rem;
+      text-shadow: 0 3px 12px rgba(0,0,0,0.7);
+    }
+
+    header .subtitle {
+      font-size: 1.5rem;
+      font-weight: 300;
+      margin-bottom: 2.5rem;
+      opacity: 0.95;
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: var(--accent);
+      color: white;
+      padding: 14px 32px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 500;
+      margin: 0 12px;
+      transition: all 0.3s;
+      box-shadow: 0 4px 15px rgba(230,57,70,0.35);
+    }
+
+    .btn:hover {
+      background-color: #d00000;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(230,57,70,0.45);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid white;
+      color: white;
+    }
+
+    .btn-outline:hover {
+      background: white;
+      color: var(--primary-dark);
+    }
+
+    nav {
+      background: var(--primary);
+      padding: 1rem 5%;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s;
+      padding: 6px 0;
+      position: relative;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: #ffd166;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: #ffd166;
+      transition: width 0.3s;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    section {
+      padding: 80px 0;
+    }
+
+    h2 {
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      color: var(--primary-dark);
+      margin-bottom: 2.5rem;
+      font-size: 2.6rem;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .about-text p {
+      margin-bottom: 1.4rem;
+      font-size: 1.1rem;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin-top: 60px;
+    }
+
+    .feature-card {
+      background: white;
+      padding: 35px 25px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+      transition: transform 0.3s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .feature-card h3 {
+      color: var(--primary);
+      margin: 1.2rem 0 0.8rem;
+      font-size: 1.4rem;
+    }
+
+    footer {
+      background: var(--primary-dark);
+      color: white;
+      text-align: center;
+      padding: 3rem 1rem 2rem;
+    }
+
+    @media (max-width: 768px) {
+      header h1 { font-size: 2.8rem; }
+      header { padding: 90px 15px 60px; }
+      .about-grid { grid-template-columns: 1fr; }
+      nav ul { gap: 1.2rem; font-size: 0.95rem; }
+    }
+  </style>
 </head>
 <body>
 
-    <header class="hero">
-        <div class="hero-content">
-            <h1>Чернівецький ліцей №14</h1>
-            <p>Якісна освіта — успішне майбутнє для вашої дитини!</p>
+  <nav>
+    <ul>
+      <li><a href="#" class="active">Головна</a></li>
+      <li><a href="#">Про ліцей</a></li>
+      <li><a href="#">Колектив</a></li>
+      <li><a href="#">Новини</a></li>
+      <li><a href="#">Вступ 2025</a></li>
+      <li><a href="#">Контакти</a></li>
+    </ul>
+  </nav>
+
+  <header>
+    <div class="container">
+      <h1>Чернівецький ліцей №14</h1>
+      <p class="subtitle">Освіта, що надихає • Майбутнє, яке створюємо разом</p>
+
+      <div>
+        <a href="#" class="btn">Дізнатись більше</a>
+        <a href="#" class="btn btn-outline">Віртуальна екскурсія</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="container">
+    <h2>Ласкаво просимо до ліцею №14</h2>
+
+    <div class="about-grid">
+      <div class="about-text">
+        <p>Чернівецький ліцей №14 — це заклад, де традиції поєднуються з сучасними підходами до навчання. Наші учні стабільно показують високі результати на ЗНО, вступають до найкращих університетів України та Європи.</p>
+        <p>Сьогодні в ліцеї працюють 68 педагогів, серед яких 12 вчителів-методистів, 18 старших вчителів та 4 відмінники освіти.</p>
+        <p>Ми пишаємося нашими випускниками — лікарями, програмістами, науковцями, підприємцями, які змінюють світ на краще.</p>
+      </div>
+
+      <div>
+        <!-- Тут може бути фото будівлі ліцею або учнів -->
+        <img src="https://images.unsplash.com/photo-1580582932707-520aed4e9987?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+             alt="Будівля Чернівецького ліцею №14"
+             style="width:100%; border-radius:12px; box-shadow:0 10px 30px rgba(0,0,0,0.15);">
+      </div>
+    </div>
+  </section>
+
+  <section style="background:#fff; border-top:1px solid #eee;">
+    <div class="container">
+      <h2>Чому обирають саме нас?</h2>
+
+      <div class="features">
+        <div class="feature-card">
+          <h3>Сильна профільна підготовка</h3>
+          <p>Математичний, українсько-філологічний, історико-правовий та природничий профілі</p>
         </div>
-    </header>
 
-    <nav class="main-nav">
-        <ul>
-            <li><a href="#about">Про ліцей</a></li>
-            <li><a href="#news">Новини</a></li>
-            <li><a href="#parents">Учням та батькам</a></li>
-            <li><a href="#contacts">Контакти</a></li>
-        </ul>
-    </nav>
+        <div class="feature-card">
+          <h3>Команда професіоналів</h3>
+          <p>Вчителі вищої категорії, переможці конкурсів, автори посібників</p>
+        </div>
 
-    <main class="container">
+        <div class="feature-card">
+          <h3>Сучасна матеріальна база</h3>
+          <p>STEM-лабораторія, 3D-принтери, інтерактивні дошки, сучасні кабінети</p>
+        </div>
 
-        <section id="about" class="card">
-            <h2>Ласкаво просимо!</h2>
-            <p><strong>Чернівецький ліцей №14</strong> — це сучасний навчальний заклад, де панує атмосфера творчості, поваги та прагнення до нових знань. Ми створюємо безпечний та інноваційний простір для кожного учня.</p>
-        </section>
+        <div class="feature-card">
+          <h3>Активне студентське життя</h3>
+          <p>Самоврядування, волонтерство, театр, спорт, наукові гуртки</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        <section id="news" class="card">
-            <h2>Останні новини</h2>
-            <div class="news-grid">
-                <article class="news-item">
-                    <h3>Розклад на ІІ семестр</h3>
-                    <p class="date">📅 15 Січня 2026</p>
-                    <p>Оновлений розклад занять вже доступний в електронному щоденнику та на дошці оголошень ліцею.</p>
-                </article>
-                <article class="news-item">
-                    <h3>Благодійний ярмарок</h3>
-                    <p class="date">📅 10 Лютого 2026</p>
-                    <p>Запрошуємо всіх учнів та батьків долучитися до щорічного весняного ярмарку.</p>
-                </article>
-            </div>
-        </section>
+  <footer>
+    <div class="container">
+      <p>Чернівецький ліцей №14 імені Івана Франка<br>
+      м. Чернівці, вул. Головна, 141<br>
+      ☎ (0372) 52-34-12   •   Email: lyceum14@cv.ua</p>
 
-        <section id="contacts" class="card">
-            <h2>Наші контакти</h2>
-            <ul class="contact-list">
-                <li>📍 <strong>Адреса:</strong> м. Чернівці, вул. Шкільна, 1</li>
-                <li>📞 <strong>Телефон:</strong> +38 (0372) 55-55-55</li>
-                <li>📧 <strong>Email:</strong> info@lyceum14.cv.ua</li>
-                <li>⏰ <strong>Графік роботи:</strong> Пн-Пт, 08:00 - 17:00</li>
-            </ul>
-        </section>
-
-    </main>
-
-    <footer class="site-footer">
-        <p>&copy; 2026 Чернівецький ліцей №14. Всі права захищені.</p>
-    </footer>
+      <p style="margin-top:1.8rem; opacity:0.8; font-size:0.95rem;">
+        © 2025–2026 Чернівецький ліцей №14. Усі права захищено.
+      </p>
+    </div>
+  </footer>
 
 </body>
 </html>
